@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { A } from 'hookrouter'
 import { Table } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 import ItensListar from './ItensListar'
 
@@ -27,20 +27,28 @@ const Listar = () => {
     return ( 
             <div className="text-center">
                 <h3>Tarefas a fazer</h3>
-                <Table striped bordered hover responsive>
+                <Table striped bordered hover size="sm">
                     <thead>
                         <tr>
-                            <th>Tarefa</th>
-                            <th>
+                            <th style={{width: '84%'}}>Tarefa</th>
+                            <th style={{width: '8%'}}>
                                 <A 
-                                    href="/cadastrar"
+                                    href="/tarefas/cadastrar"
                                     className="btn btn-success btn-sm"    
                                 ><FontAwesomeIcon icon={faPlus}/> Cadastrar</A>
+                                </th>
+                                <th style={{width: '8%'}}>
+                                <A 
+                                    href="/"
+                                    className="btn btn-primary btn-sm"    
+                                ><FontAwesomeIcon icon={faSignOutAlt}/> Sair</A>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
+
                         <ItensListar tarefas={tarefas} recarregarTarefas={setCarregarTarefas}/>
+
                     </tbody>
                 </Table>
 

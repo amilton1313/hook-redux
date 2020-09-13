@@ -1,21 +1,45 @@
 import React from 'react'
 import { useRoutes } from 'hookrouter'
 
-import Listar from '../components/Listar'
-import Cadastrar from '../components/Cadastrar'
-import Atualizar from '../components/Atualizar'
+import Entrada from '../principal/Entrada'
+
+import Calculadora from '../modulos/calculadora/Calculadora'
+
+import ConversorMoedas from '../modulos/conversorMoedas/ConversorMoedas'
+
+import Listar from '../modulos/tarefas/Listar'
+import Cadastrar from '../modulos/tarefas/Cadastrar'
+import Atualizar from '../modulos/tarefas/Atualizar'
 
 function Rotas() {
 
-  
-    const routes = {
-      '/': () => <Listar />,
-      '/cadastrar': () => <Cadastrar />,
-      '/atualizar/:id': ({id}) => <Atualizar id={id} />
+    const entrada = {
+      '/': () => <Entrada />
+    }
+
+    const calculadora = {
+      '/moedas': () => <ConversorMoedas />
+    }
+
+    const moedas = {
+      '/calculadora': () => <Calculadora />
+    }
+
+    const tarefas = {
+      '/tarefas/listar': () => <Listar />,
+      '/tarefas/cadastrar': () => <Cadastrar />,
+      '/tarefas/atualizar/:id': ({id}) => <Atualizar id={id} />
+    }
+
+    const rotas = {
+      ...entrada,
+      ...calculadora,
+      ...moedas,
+      ...tarefas
     }
   
   
-    return useRoutes(routes)
+    return useRoutes(rotas)
   }
   
-  export default Rotas
+  export default Rotas;

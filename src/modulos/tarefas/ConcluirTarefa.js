@@ -4,6 +4,8 @@ import { Button, Modal } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
 
+import './tarefas.css'
+
 const ConcluirTarefa = props => {
 
     const [exibirModal, setExibirModal] = useState(false)
@@ -33,13 +35,13 @@ const ConcluirTarefa = props => {
         localStorage['tarefas'] = JSON.stringify(tarefas)
         setExibirModal(false)
         props.recarregarTarefas(true)
-        navigate('/')
+        navigate('/tarefas/listar')
 
     }
 
     return ( 
         <span className={props.ClassName}>
-            <Button className="btn-sm" onClick={handleAbrirModal}>
+            <Button className="btn-sm margin1"  onClick={handleAbrirModal}>
                 <FontAwesomeIcon icon={faClipboardCheck} /> 
             </Button>
 

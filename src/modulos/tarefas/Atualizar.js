@@ -5,7 +5,7 @@ const Atualizar = () => {
     return ( 
         <div>
             <h1>Atualizar</h1>
-            <A href="/" className="btn btn-light">Voltar</A>
+            <A href="/tarefas/listar" className="btn btn-light">Voltar</A>
         </div>
      )
 }

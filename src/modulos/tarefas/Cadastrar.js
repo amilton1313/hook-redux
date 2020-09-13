@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { A, navigate } from 'hookrouter'
 import { Button, Form, Jumbotron, Modal } from 'react-bootstrap'
 
-import Tarefa from '../models/Tarefa.model'
+import Tarefa from './models/Tarefa.model'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
@@ -31,7 +31,7 @@ const Cadastrar = props => {
 
     const handleFecharModal = () => {
         setExibirModal(false)
-        navigate("/")
+        navigate("/tarefas/listar")
     }
 
     return (
@@ -66,7 +66,7 @@ const Cadastrar = props => {
                                 Cadastrar
                             </Button>
                         &nbsp;
-                        <A href="/" className="btn btn-light">Voltar</A>
+                        <A href="/tarefas/listar" className="btn btn-light">Voltar</A>
                     </Form.Group>
                 </Form>
                 <Modal show={exibirModal} onHide={handleFecharModal}>

@@ -1,0 +1,9 @@
+.hidden {
+    display: none;
+}
+
+.margin1 {
+    margin-top: 0 !important;
+    margin-right: 10px !important;
+    width: 200px !important;
+}
