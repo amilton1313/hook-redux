@@ -41,7 +41,7 @@ const ConcluirTarefa = props => {
 
     return ( 
         <span className={props.ClassName}>
-            <Button className="btn-sm margin1"  onClick={handleAbrirModal}>
+            <Button className="btn-warning btn-sm margin1"  onClick={handleAbrirModal}>
                 <FontAwesomeIcon icon={faClipboardCheck} /> 
             </Button>
 

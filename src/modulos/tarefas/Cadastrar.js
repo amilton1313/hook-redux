@@ -8,6 +8,10 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const Cadastrar = props => {
 
+    const { xxx } = props
+
+    console.log('props no cad ', props)
+
     const [tarefa, setTarefa] = useState('')
     const [formValidado, setFormValidado] = useState(false)
     const [exibirModal, setExibirModal] = useState(false)

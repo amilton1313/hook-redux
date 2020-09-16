@@ -27,7 +27,7 @@ function Rotas() {
 
     const tarefas = {
       '/tarefas/listar': () => <Listar />,
-      '/tarefas/cadastrar': () => <Cadastrar />,
+      '/tarefas/cadastrar': (xxx) => <Cadastrar xxx={xxx}/>,
       '/tarefas/atualizar/:id': ({id}) => <Atualizar id={id} />
     }
 

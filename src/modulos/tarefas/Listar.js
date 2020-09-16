@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { A } from 'hookrouter'
-import { Table } from 'react-bootstrap'
+import { A, navigate } from 'hookrouter'
+import { Table, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 import ItensListar from './ItensListar'
+import Paginacao from './Paginacao'
 
 const Listar = () => {
-        const [tarefas, setTarefas] = useState([])
+    const [tarefas, setTarefas] = useState([])
     const [carregarTarefas, setCarregarTarefas] = useState(true)
+    const [totalItems, setTotalItems] = useState([])
 
     useEffect(() => {
 
@@ -16,6 +18,7 @@ const Listar = () => {
             const tarefasDB = localStorage['tarefas']
             let listarTarefas = tarefasDB ? JSON.parse(tarefasDB) : []
             setTarefas(listarTarefas)
+            setTotalItems(listarTarefas.length)
         }
 
         if (carregarTarefas) {
@@ -42,6 +45,9 @@ const Listar = () => {
                                     href="/"
                                     className="btn btn-primary btn-sm"    
                                 ><FontAwesomeIcon icon={faSignOutAlt}/> Sair</A>
+                            </th>
+                            <th>
+                                <Button onClick={() => navigate('/tarefas/cadastrar? a="aaaa" & b="bbbb"')}>teste</Button>
                             </th>
                         </tr>
                     </thead>
