@@ -1,12 +1,15 @@
 import React, {useState} from 'react'
 import { A, navigate } from 'hookrouter'
 import { Button, Form, Jumbotron, Modal } from 'react-bootstrap'
+import axios from 'axios'
 
 import Tarefa from './models/Tarefa.model'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
-const Cadastrar = props => {
+const Cadastrar = async props => {
+
+    const API_URL_TAREFAS = 'http://localhost:3001/tarefas'
 
     const { xxx } = props
 
@@ -19,12 +22,21 @@ const Cadastrar = props => {
     const cadastrar = event => {
         event.preventDefault()
         setFormValidado(true)
-        if (event.currentTarget.checkValidity() === true) {
-            const tarefasDB = localStorage['tarefas']
-            const tarefas = tarefasDB ? JSON.parse(tarefasDB) : []
 
-            tarefas.push(new Tarefa(new Date().getTime(), tarefa, false))
-            localStorage['tarefas'] = JSON.stringify(tarefas)
+        const cadastro = new Tarefa(tarefa, false)
+
+        if (event.currentTarget.checkValidity() === true) {
+            try {
+                const tarefas = await axios.post(API_URL_TAREFAS, cadastro)
+
+            } catch(err) {
+
+            }
+
+
+
+            // tarefas.push(new Tarefa(new Date().getTime(), tarefa, false))
+            // localStorage['tarefas'] = JSON.stringify(tarefas)
             setExibirModal(true)
         }
     }

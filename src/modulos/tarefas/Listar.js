@@ -6,10 +6,12 @@ import { faPlus, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 import ItensListar from './ItensListar'
 import Paginacao from './Paginacao'
+import axios from 'axios'
 
 const Listar = () => {
 
     const ITEMS_POR_PAG = 3
+    const API_URL_TAREFAS = 'http://localhost:3001/tarefas'
 
     const [tarefas, setTarefas] = useState([])
     const [carregarTarefas, setCarregarTarefas] = useState(true)
@@ -18,13 +20,18 @@ const Listar = () => {
 
     useEffect(() => {
 
-        function obterTarefas() {
-            const tarefasDB = localStorage['tarefas']
-            let listaTarefas = tarefasDB ? JSON.parse(tarefasDB) : []
-            setTotalItems(listaTarefas.length)
-            console.log('lista', listaTarefas)
-            // setTarefas(listaTarefas.splice((paginaAtual - 1) * ITEMS_POR_PAG, ITEMS_POR_PAG))
-            // setTarefas(listaTarefas.splice((0) * 3, 3))
+        async function obterTarefas() {
+            try {
+                let { data } = await axios.get(API_URL_TAREFAS)
+                console.log('data', data)
+                let listaTarefas = data
+                setTotalItems(listaTarefas.length)
+                setTarefas(listaTarefas.splice((paginaAtual - 1) * ITEMS_POR_PAG, ITEMS_POR_PAG))
+
+            } catch(err) {
+                
+            }
+
         }
 
         if (carregarTarefas) {
