@@ -23,22 +23,20 @@ const Cadastrar = async props => {
         event.preventDefault()
         setFormValidado(true)
 
-        const cadastro = new Tarefa(tarefa, false)
+        // const cadastro = new Tarefa(tarefa, false) 
 
-        if (event.currentTarget.checkValidity() === true) {
-            try {
-                const tarefas = await axios.post(API_URL_TAREFAS, cadastro)
+        // if (event.currentTarget.checkValidity() === true) {
+        //     try {
+        //         const tarefas = await axios.post(API_URL_TAREFAS, cadastro)
 
-            } catch(err) {
+        //     } catch(err) {
 
-            }
-
-
+        //     }
 
             // tarefas.push(new Tarefa(new Date().getTime(), tarefa, false))
             // localStorage['tarefas'] = JSON.stringify(tarefas)
             setExibirModal(true)
-        }
+        // }
     }
 
     const handleTxtTarefa = event => {

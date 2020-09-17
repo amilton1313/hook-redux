@@ -11,6 +11,8 @@ import Listar from '../modulos/tarefas/Listar'
 import Cadastrar from '../modulos/tarefas/Cadastrar'
 import Atualizar from '../modulos/tarefas/Atualizar'
 
+import DashBoard from '../modulos/dashboard/DashBoard'
+
 function Rotas() {
 
     const entrada = {
@@ -31,11 +33,16 @@ function Rotas() {
       '/tarefas/atualizar/:id': ({id}) => <Atualizar id={id} />
     }
 
+    const dashboard = {
+      '/dashboard': () => <DashBoard />
+    }
+
     const rotas = {
       ...entrada,
       ...calculadora,
       ...moedas,
-      ...tarefas
+      ...tarefas,
+      ...dashboard
     }
   
   
