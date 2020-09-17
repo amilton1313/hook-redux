@@ -8,24 +8,35 @@ import ItensListar from './ItensListar'
 import Paginacao from './Paginacao'
 
 const Listar = () => {
+
+    const ITEMS_POR_PAG = 3
+
     const [tarefas, setTarefas] = useState([])
     const [carregarTarefas, setCarregarTarefas] = useState(true)
-    const [totalItems, setTotalItems] = useState([])
+    const [totalItems, setTotalItems] = useState(0)
+    const [paginaAtual, setPaginaAtual] = useState(1)
 
     useEffect(() => {
 
         function obterTarefas() {
             const tarefasDB = localStorage['tarefas']
-            let listarTarefas = tarefasDB ? JSON.parse(tarefasDB) : []
-            setTarefas(listarTarefas)
-            setTotalItems(listarTarefas.length)
+            let listaTarefas = tarefasDB ? JSON.parse(tarefasDB) : []
+            setTotalItems(listaTarefas.length)
+            console.log('lista', listaTarefas)
+            // setTarefas(listaTarefas.splice((paginaAtual - 1) * ITEMS_POR_PAG, ITEMS_POR_PAG))
+            // setTarefas(listaTarefas.splice((0) * 3, 3))
         }
 
         if (carregarTarefas) {
             obterTarefas()
             setCarregarTarefas(false)
         }
-    }, [carregarTarefas])
+    }, [carregarTarefas, paginaAtual])
+
+    const handleMudarPagina = (pagina) => {
+        setPaginaAtual(pagina)
+        setCarregarTarefas(true)
+    }
 
     return ( 
             <div className="text-center">
@@ -57,6 +68,14 @@ const Listar = () => {
 
                     </tbody>
                 </Table>
+                <Paginacao
+                    totalItems={totalItems}
+                    ItensPorPagina={ITEMS_POR_PAG}
+                    paginaAtual={paginaAtual}
+                    mudarPagina={handleMudarPagina}
+                >
+
+                </Paginacao>
 
             </div>
 
