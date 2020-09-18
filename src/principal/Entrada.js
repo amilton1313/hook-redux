@@ -12,6 +12,10 @@ const Entrada = () => {
             <A href="/tarefas/listar" className="btn btn-primary">Tarefas</A>
             &nbsp;
             <A href="/dashboard" className="btn btn-primary">Dashboard</A>
+            &nbsp;
+            <A href="/ecomerce" className="btn btn-primary">e-Comerce</A>
+            &nbsp;
+            <A href="/propostas" className="btn btn-primary">Propostas</A>
         </div>
      )
 }

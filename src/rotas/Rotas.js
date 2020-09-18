@@ -13,6 +13,10 @@ import Atualizar from '../modulos/tarefas/Atualizar'
 
 import DashBoard from '../modulos/dashboard/DashBoard'
 
+import Ecomerce from '../modulos/ecomerce/Ecomerce'
+
+import Propostas from '../modulos/propostas/Propostas'
+
 function Rotas() {
 
     const entrada = {
@@ -37,12 +41,22 @@ function Rotas() {
       '/dashboard': () => <DashBoard />
     }
 
+    const ecomerce = {
+      '/ecomerce': () => <Ecomerce />
+    }
+
+    const propostas = {
+      '/propostas': () => <Propostas />
+    }
+
     const rotas = {
       ...entrada,
       ...calculadora,
       ...moedas,
       ...tarefas,
-      ...dashboard
+      ...dashboard,
+      ...ecomerce,
+      ...propostas
     }
   
   
