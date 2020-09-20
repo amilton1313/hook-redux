@@ -17,6 +17,8 @@ import Ecomerce from '../modulos/ecomerce/Ecomerce'
 
 import Propostas from '../modulos/propostas/Propostas'
 
+import Sidebar from '../modulos/sidebar/Sidebar'
+
 function Rotas() {
 
     const entrada = {
@@ -49,6 +51,10 @@ function Rotas() {
       '/propostas': () => <Propostas />
     }
 
+    const sidebar = {
+      '/sidebar': () => <Sidebar />
+    }
+
     const rotas = {
       ...entrada,
       ...calculadora,
@@ -56,7 +62,8 @@ function Rotas() {
       ...tarefas,
       ...dashboard,
       ...ecomerce,
-      ...propostas
+      ...propostas,
+      ...sidebar
     }
   
   

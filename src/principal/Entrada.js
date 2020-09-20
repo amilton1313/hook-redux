@@ -16,6 +16,8 @@ const Entrada = () => {
             <A href="/ecomerce" className="btn btn-primary">e-Comerce</A>
             &nbsp;
             <A href="/propostas" className="btn btn-primary">Propostas</A>
+            &nbsp;
+            <A href="/sidebar" className="btn btn-primary">Sidebar</A>
         </div>
      )
 }

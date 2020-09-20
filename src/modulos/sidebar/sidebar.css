@@ -1,0 +1,18 @@
+.left_sidebar {
+    background-color: grey;
+    position: fixed;
+    width: 40em;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transition: all ease 0.5s;
+}
+
+.left_sidebar-show {
+    transform: translateX(0);
+
+}
+
+.left_sidebar-hide {
+    transform: translateX(-40em);
+}
