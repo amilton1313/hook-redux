@@ -47,7 +47,7 @@ const PropostaImobiliaria =
                                     disabled={false}
                                     classe="bot btn-primary"
                                     icone={faFolderOpen}
-                                    onClick={() => setExibirModalImobiliaria(true)}
+                                    onClick={() => setExibirModalImobiliaria(!exibirModalImobiliaria)}
                                 />
                                 <BotaoLinha
                                     disabled={false}
@@ -67,13 +67,12 @@ const PropostaImobiliaria =
             </div>
         </Form.Group>
         {
-            exibirModalImobiliaria
-                ? <MostrarImobiliarias 
-                    setIdImobiliaria={setIdImobiliaria}
-                    setNomeImobiliaria={setNomeImobiliaria}
-                    setExibirModalImobiliaria={setExibirModalImobiliaria}
-                    setExibirBotoesImobiliaria={setExibirBotoesImobiliaria} />
-                : null
+            <MostrarImobiliarias 
+            titulo='Imobiliárias'
+            setIdImobiliaria={setIdImobiliaria}
+            setNomeImobiliaria={setNomeImobiliaria}
+            setExibirModalImobiliaria={setExibirModalImobiliaria}
+            exibirModalImobiliaria={exibirModalImobiliaria} />
         }
     </>
     );

@@ -2,28 +2,28 @@ import React, { useState, useEffect } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import ReactList from 'react-list';
 
-import corretores from './lista-de-imobiliarias'
+import proponentes from './lista-de-imobiliarias'
 import './propo.css'
 
-const MostrarCorretores = ({ titulo, setIdCorretor, setNomeCorretor,
-    setExibirModalCorretor, exibirModalCorretor }) => {
+const MostrarProponentes = ({ titulo, setIdProponente, setNomeProponente,
+    setExibirModalProponente, exibirModalProponente }) => {
 
     const [buscar, setBuscar] = useState('')
-    const [corretoresFilter, setCorretoresFilter] = useState([])
+    const [proponentesFilter, setProponentesFilter] = useState([])
 
     useEffect(() => {
-        setCorretoresFilter(corretores)
+        setProponentesFilter(proponentes)
     }, [])
 
     const handleSelecionar = (imob) => {
-        setIdCorretor(imob.id)
-        setNomeCorretor(imob.nome)
-        setExibirModalCorretor(false)
+        setIdProponente(imob.id)
+        setNomeProponente(imob.nome)
+        setExibirModalProponente(false)
     }
 
-    const classe = exibirModalCorretor ? "left_sidebar left_sidebar-show" : "left_sidebar left_sidebar-hide"
+    const classe = exibirModalProponente ? "left_sidebar left_sidebar-show" : "left_sidebar left_sidebar-hide"
 
-    const imobs = corretoresFilter ? corretoresFilter : corretores
+    const imobs = proponentesFilter ? proponentesFilter : proponentes
     const renderItem = () => imobs.map(
             imob => <div className="linha"  onClick={() => handleSelecionar(imob)}>{imob.nome}</div>
             )
@@ -40,7 +40,7 @@ const MostrarCorretores = ({ titulo, setIdCorretor, setNomeCorretor,
         const busca = new Promise((resolve, reject) => {
 
             resolve(
-                corretores.filter((imob) => {
+                proponentes.filter((imob) => {
                     const pp = imob.nome
                     if (pp) {
                         return pp.toUpperCase().search(
@@ -54,12 +54,10 @@ const MostrarCorretores = ({ titulo, setIdCorretor, setNomeCorretor,
 
         busca
             .then(res => {
-                setCorretoresFilter(res)
+                setProponentesFilter(res)
             }
             )
     }
-
-    console.log('corretores chegou',classe, {exibirModalCorretor})
 
     return (
         <div className={classe}>
@@ -95,7 +93,7 @@ const MostrarCorretores = ({ titulo, setIdCorretor, setNomeCorretor,
                 />
             </div>
             <div className="text-right">
-            <Button sm={2} className="btn col-2" onClick={() => setExibirModalCorretor(false)}>Fechar</Button>
+            <Button sm={2} className="btn col-2" onClick={() => setExibirModalProponente(false)}>Fechar</Button>
 
             </div>
 
@@ -104,4 +102,4 @@ const MostrarCorretores = ({ titulo, setIdCorretor, setNomeCorretor,
     )
 }
 
-export default MostrarCorretores
+export default MostrarProponentes

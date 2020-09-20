@@ -3,34 +3,36 @@ import { Form, Row, Col } from 'react-bootstrap'
 import { faMinus, faPlus, faFolderOpen } from '@fortawesome/free-solid-svg-icons'
 
 import BotaoLinha from './BotaoLinha'
-import MostrarCorretores from './MostrarCorretores'
+import MostrarProponentes from './MostrarProponentes'
 
-const PropostaCorretor =
+const PropostaProponente =
     ({
-        setIdCorretor,
-        setNomeCorretor,
-        nomeCorretor
+        setIdProponente,
+        setNomeProponente,
+        nomeProponente
     }) => {
 
-    const [exibirModalCorretor, setExibirModalCorretor] = useState(false)
-    const [exibirBotoesCorretor, setExibirBotoesCorretor] = useState(false)
+    const [exibirModalProponente, setExibirModalProponente] = useState(false)
+    const [exibirBotoesProponente, setExibirBotoesProponente] = useState(false)
+
+    const [classe, setClasse] = useState('gr')
 
     return (
         <>
         <Form.Group
             as={Row}
-            onMouseOver={() => setExibirBotoesCorretor(true)}
-            onMouseLeave={() => setExibirBotoesCorretor(false)}
+            onMouseOver={() => setExibirBotoesProponente(true)}
+            onMouseLeave={() => setExibirBotoesProponente(false)}
             className="gr"
         >
-            <Form.Label column sm={2} className="lab">Corretor : </Form.Label>
+            <Form.Label column sm={2} className="lab">Proponente : </Form.Label>
             <Col sm={4}>
                 <Form.Control
                     type="text"
-                    placeholder="Selecione um Corretor no botão ao lado."
-                    name="id_Corretor"
+                    placeholder="Selecione uma Imobiliária no botão ao lado."
+                    name="id_Proponente"
                     className="cont"
-                    value={nomeCorretor}
+                    value={nomeProponente}
                     readonly
                 />
                 <Form.Control.Feedback type="invalid">
@@ -39,25 +41,25 @@ const PropostaCorretor =
             </Col>
             <div className="d-flex" >
                 {
-                    exibirBotoesCorretor
+                    exibirBotoesProponente
                         ? <div className="d-flex">
                                 <BotaoLinha
                                     disabled={false}
                                     classe="bot btn-primary"
                                     icone={faFolderOpen}
-                                    onClick={() => setExibirModalCorretor(!exibirModalCorretor)}
+                                    onClick={() => setExibirModalProponente(!exibirModalProponente)}
                                 />
                                 <BotaoLinha
                                     disabled={false}
                                     classe="bot btn-success"
                                     icone={faPlus}
-                                    onClick={() => setIdCorretor(null)}
+                                    onClick={() => setIdProponente(null)}
                                 />
                                 <BotaoLinha
                                     disabled={false}
                                     classe="bot btn-light"
                                     icone={faMinus}
-                                    onClick={() => setIdCorretor(null)}
+                                    onClick={() => setIdProponente(null)}
                                 />
                             </div>
                         : null
@@ -65,17 +67,15 @@ const PropostaCorretor =
             </div>
         </Form.Group>
         {
-            exibirModalCorretor
-                ? <MostrarCorretores 
-                titulo='Corretores'
-                setIdCorretor={setIdCorretor}
-                setNomeCorretor={setNomeCorretor}
-                setExibirModalCorretor={setExibirModalCorretor}
-                exibirModalCorretor={exibirModalCorretor} />
-                : null
+            <MostrarProponentes 
+            titulo='Proponentes'
+            setIdProponente={setIdProponente}
+            setNomeProponente={setNomeProponente}
+            setExibirModalProponente={setExibirModalProponente}
+            exibirModalProponente={exibirModalProponente} />
         }
-        </>
+    </>
     );
     }
 
-export default PropostaCorretor;
+export default PropostaProponente;

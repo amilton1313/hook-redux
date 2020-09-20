@@ -10,7 +10,9 @@ import './propo.css'
 
 import PropostaImobiliaria from './PropostaImobiliaria'
 import PropostaCorretor from './PropostaCorretor'
-import Lateral from './Lateral'
+import PropostaProponente from './PropostaProponente'
+import PropostaInterveniente from './PropostaInterveniente'
+import tabelasVendas from './lista-de-tabelas-vendas'
 
 registerLocale('pt', 'pt')
 
@@ -61,7 +63,9 @@ const Propostas = () => {
      useEffect(() => {
         if (!idImobiliaria) { setNomeImobiliaria('') }
         if (!idCorretor) { setNomeCorretor('') }
-    }, [idImobiliaria, idCorretor])
+        if (!idProponente) { setNomeProponente('') }
+        if (!idInterveniente) { setNomeInterveniente('') }
+    }, [idImobiliaria, idCorretor, idProponente, idInterveniente])
 
     return (
         <>
@@ -103,6 +107,7 @@ const Propostas = () => {
 
                 </Form.Group>
 
+
                 {/* Imobiliaria */}
                 <PropostaImobiliaria 
                     setIdImobiliaria={setIdImobiliaria}
@@ -110,12 +115,14 @@ const Propostas = () => {
                     nomeImobiliaria={nomeImobiliaria}
                 />
 
+
                 {/* Corretor */}
                 <PropostaCorretor 
                     setIdCorretor={setIdCorretor}
                     setNomeCorretor={setNomeCorretor}
                     nomeCorretor={nomeCorretor}
                 />
+
 
                 {/* Empreendimento */}
                 <Form.Group 
@@ -151,147 +158,82 @@ const Propostas = () => {
                 </Form.Group>
 
 
-
                 {/* Tabela de Vendas */}
                 <Form.Group 
                     as={Row}
-                    onMouseOver={() => setExibirBotoesTabVendas(true)}   
-                    onMouseLeave={() => setExibirBotoesTabVendas(false)} 
                     className="gr"
                 >
                     <Form.Label column sm={2} className="lab">Tabela de Vendas : </Form.Label>
                     <Col sm={4}>
-                        <Form.Control
-                            type="text"
-                            placeholder="Selecione uma Tabela de Vendas no botão ao lado."
-                            name="id_tabela"
-                            className="cont"
-                        />
-                        <Form.Control.Feedback type="invalid">
-                            Digite o seu nome completo (mínimo 5 caracteres).
-                            </Form.Control.Feedback>
-                    </Col>
-                    <div className="d-flex" >
+                    <Form.Control as="select" name="id_tabela" className="cont">
                         {
-                            exibirBotoesTabVendas
-                            ?   <div className="d-flex">
-                                    <Button disabled={false} className="bot" onClick={() => setExibirModalTabVendas(true)}><FontAwesomeIcon icon={faFolderOpen} /></Button>
-                                    <Button className="bot" onClick={() => setIdTabVenda(null)}><FontAwesomeIcon icon={faPlus} /></Button>
-                                    <Button className="bot" onClick={() => setIdTabVenda(null)}><FontAwesomeIcon icon={faMinus} /></Button>
-                                </div>
-                            :   null
+                            tabelasVendas.map(tab => <option value={tab.id_tabela_vendas}>{tab.descricao}</option>)
                         }
-                    </div>
+                    </Form.Control>
+                    </Col>
 
                 </Form.Group>
-
 
 
                 {/* Proponente */}
-                <Form.Group 
-                    as={Row}
-                    onMouseOver={() => setExibirBotoesProponente(true)}   
-                    onMouseLeave={() => setExibirBotoesProponente(false)} 
-                    className="gr"
-                >
-                    <Form.Label column sm={2} className="lab">Proponente : </Form.Label>
-                    <Col sm={4}>
-                        <Form.Control
-                            type="text"
-                            placeholder="Selecione um Proponente no botão ao lado."
-                            name="id_proponente"
-                            className="cont"
-                        />
-                        <Form.Control.Feedback type="invalid">
-                            Digite o seu nome completo (mínimo 5 caracteres).
-                            </Form.Control.Feedback>
-                    </Col>
-                    <div className="d-flex" >
-                        {
-                            exibirBotoesProponente
-                            ?   <div className="d-flex">
-                                    <Button disabled={false} className="bot" onClick={() => setExibirModalProponente(true)}><FontAwesomeIcon icon={faFolderOpen} /></Button>
-                                    <Button className="bot" onClick={() => setIdProponente(null)}><FontAwesomeIcon icon={faPlus} /></Button>
-                                    <Button className="bot" onClick={() => setIdProponente(null)}><FontAwesomeIcon icon={faMinus} /></Button>
-                                </div>
-                            :   null
-                        }
-                    </div>
-
-                </Form.Group>
+                <PropostaProponente 
+                    setIdProponente={setIdProponente}
+                    setNomeProponente={setNomeProponente}
+                    nomeProponente={nomeProponente}
+                />
 
 
                 {/* Interveniente */}
-                <Form.Group 
-                    as={Row}
-                    onMouseOver={() => setExibirBotoesInterveniente(true)}   
-                    onMouseLeave={() => setExibirBotoesInterveniente(false)} 
-                    className="gr"
-                >
-                    <Form.Label column sm={2} className="lab">Interveniente : </Form.Label>
-                    <Col sm={4}>
-                        <Form.Control
-                            type="text"
-                            placeholder="Digite o seu nome completo"
-                            name="nomeCompleto"
-                            className="cont"
-                        />
-                        <Form.Control.Feedback type="invalid">
-                            Digite o seu nome completo (mínimo 5 caracteres).
-                            </Form.Control.Feedback>
-                    </Col>
-                    <div className="d-flex" >
-                        {
-                            exibirBotoesInterveniente
-                            ?   <div className="d-flex">
-                                    <Button disabled={false} className="bot" onClick={() => setExibirModalInterveniente(true)}><FontAwesomeIcon icon={faFolderOpen} /></Button>
-                                    <Button className="bot" onClick={() => setIdInterveniente(null)}><FontAwesomeIcon icon={faPlus} /></Button>
-                                    <Button className="bot" onClick={() => setIdInterveniente(null)}><FontAwesomeIcon icon={faMinus} /></Button>
-                                </div>
-                            :   null
-                        }
-                    </div>
-
-                </Form.Group>
+                <PropostaInterveniente 
+                    setIdInterveniente={setIdInterveniente}
+                    setNomeInterveniente={setNomeInterveniente}
+                    nomeInterveniente={nomeInterveniente}
+                />
 
 
                 {/* Local da Captacao */}
                 <Form.Group 
                     as={Row}
-                    onMouseOver={() => setExibirBotoesLocaisCaptacao(true)}   
-                    onMouseLeave={() => setExibirBotoesLocaisCaptacao(false)} 
                     className="gr"
                 >
                     <Form.Label column sm={2} className="lab">Local da Captação : </Form.Label>
                     <Col sm={4}>
-                        <Form.Control
-                            type="text"
-                            placeholder="Digite o seu nome completo"
-                            name="nomeCompleto"
-                            className="cont"
-                        />
-                        <Form.Control.Feedback type="invalid">
-                            Digite o seu nome completo (mínimo 5 caracteres).
-                            </Form.Control.Feedback>
+                    <Form.Control as="select" name="id_tabela" className="cont">
+                        <option value={1}>PLANTÃO / LOJA DE VENDAS</option>
+                        <option value={2}>SALÃO DO IMÓVEL</option>
+                        <option value={3}>IMOBILIÁRIA</option>
+                        <option value={4}>ON LINE</option>
+                        <option value={5}>MÍDIA IMPRESSSA</option>
+                        <option value={6}>MÍDIA TV</option>
+                        <option value={7}>MÍDIA RÁDIO</option>
+                        <option value={8}>MÍDIA OUTDOOR</option>
+                        <option value={9}>INDICAÇÃO</option>
+                        <option value={10}>PROSPECÇÃO CORRETOR</option>
+                        <option value={11}>ACM</option>
+                    </Form.Control>
                     </Col>
-                    <div className="d-flex" >
-                        {
-                            exibirBotoesLocaisCaptacao
-                            ?   <div className="d-flex">
-                                    <Button disabled={false} className="bot" onClick={() => setExibirModalLocaisCaptacao(true)}><FontAwesomeIcon icon={faFolderOpen} /></Button>
-                                    <Button className="bot" onClick={() => setIdLocalCaptacao(null)}><FontAwesomeIcon icon={faPlus} /></Button>
-                                    <Button className="bot" onClick={() => setIdLocalCaptacao(null)}><FontAwesomeIcon icon={faMinus} /></Button>
-                                </div>
-                            :   null
-                        }
-                    </div>
+
+                </Form.Group>
+
+                 {/* Observações */}
+                 <Form.Group 
+                    as={Row}
+
+                    className="gr"
+                >
+                    <Form.Label column sm={2} className="lab">Observações : </Form.Label>
+                    <Col sm={4}>
+                    <Form.Control as="textarea" name="id_tabela" className="cont" style={{height: '200px'}}>
+
+                    </Form.Control>
+                    </Col>
 
                 </Form.Group>
 
             </Form>
 
         </Jumbotron>
-                        />
+                        
         </>
     )
 }
