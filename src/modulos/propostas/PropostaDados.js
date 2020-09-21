@@ -16,7 +16,7 @@ import tabelasVendas from './lista-de-tabelas-vendas'
 
 registerLocale('pt', 'pt')
 
-const Propostas = () => {
+const PropostaDados = () => {
 
     const [idProposta, setIdProposta] = useState(3606)
     const [data, setData] = useState('10/09/2020')
@@ -238,4 +238,4 @@ const Propostas = () => {
     )
 }
 
-export default Propostas
+export default PropostaDados

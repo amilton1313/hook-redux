@@ -15,7 +15,7 @@ const Entrada = () => {
             &nbsp;
             <A href="/ecomerce" className="btn btn-primary">e-Comerce</A>
             &nbsp;
-            <A href="/propostas" className="btn btn-primary">Propostas</A>
+            <A href="/proposta" className="btn btn-primary">Proposta</A>
             &nbsp;
             <A href="/sidebar" className="btn btn-primary">Sidebar</A>
         </div>

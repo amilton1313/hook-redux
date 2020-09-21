@@ -15,7 +15,7 @@ import DashBoard from '../modulos/dashboard/DashBoard'
 
 import Ecomerce from '../modulos/ecomerce/Ecomerce'
 
-import Propostas from '../modulos/propostas/Propostas'
+import Proposta from '../modulos/propostas/Proposta'
 
 import Sidebar from '../modulos/sidebar/Sidebar'
 
@@ -48,7 +48,7 @@ function Rotas() {
     }
 
     const propostas = {
-      '/propostas': () => <Propostas />
+      '/proposta': () => <Proposta />
     }
 
     const sidebar = {

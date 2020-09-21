@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
-import ReactList from 'react-list';
+import ReactList from 'react-list'
 
 import corretores from './lista-de-imobiliarias'
 import './propo.css'

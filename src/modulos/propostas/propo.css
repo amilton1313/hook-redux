@@ -87,3 +87,37 @@
     max-height: 600px;
     background-color: white;
 }
+
+.div-unidades-1 {
+    width: 200px; 
+    background-color: gray;
+    color: white;
+    border-right: 1px solid white;
+    padding-left: 5px;
+    line-height: 40px;
+}
+
+.div-unidades-2 {
+    width: 100px; 
+    background-color: gray;
+    color: white;
+    border-right: 1px solid white;
+    padding-left: 5px;
+    line-height: 40px;
+}
+
+.div-unidades-3 {
+    width: 200px; 
+    border-right: 1px solid white;
+    padding-left: 5px;
+    line-height: 40px;
+}
+
+.div-unidades-4 {
+    width: 100px; 
+    border-right: 1px solid white;
+    padding-left: 5px;
+    line-height: 40px;
+}
+
+
