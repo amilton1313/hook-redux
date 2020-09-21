@@ -18,6 +18,11 @@ registerLocale('pt', 'pt')
 
 const PropostaDados = () => {
 
+    const unidades = [
+        { id_unidade: 34, blocox: 'Aurora', numero: '404', garagensx: '25 e 36', depositosx: '65 e 21' },
+        { id_unidade: 35, blocox: 'Aurora', numero: '502', garagensx: '25 e 40', depositosx: '70 e 75' },
+    ]
+
     const [idProposta, setIdProposta] = useState(3606)
     const [data, setData] = useState('10/09/2020')
 
@@ -156,6 +161,26 @@ const PropostaDados = () => {
                     </div>
 
                 </Form.Group>
+
+                <div style={{marginLeft: '18%'}}>
+                    <div className="d-flex ">
+                        <div className="div-unidades-1">Bloco</div>
+                        <div className="div-unidades-2">Unidade</div>
+                        <div className="div-unidades-2">Garagens</div>
+                        <div className="div-unidades-2">Depósitos</div>
+                    </div>
+                        {
+                            unidades.map(und => (
+
+                                <div className="d-flex ">
+                        <div className="div-unidades-3">{und.blocox}</div>
+                            <div className="div-unidades-4">{und.numero}</div>
+                            <div className="div-unidades-4">{und.garagensx}</div>
+                            <div className="div-unidades-4">{und.depositosx}</div>
+                    </div>
+                            ))
+                        }
+                </div>
 
 
                 {/* Tabela de Vendas */}
