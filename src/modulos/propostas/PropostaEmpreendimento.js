@@ -3,18 +3,18 @@ import { Form, Row, Col, OverlayTrigger, Tooltip, Button } from 'react-bootstrap
 import { faMinus, faPlus, faFolderOpen } from '@fortawesome/free-solid-svg-icons'
 
 import BotaoLinha from './BotaoLinha'
-import MostrarImobiliarias from './MostrarImobiliarias'
+import MostrarEmpreendimentos from './MostrarEmpreendimentos'
 
-const PropostaImobiliaria =
+const PropostaEmpreendimento =
     ({
-        setIdImobiliaria,
-        setNomeImobiliaria,
-        nomeImobiliaria,
+        setIdEmpreendimento,
+        setNomeEmpreendimento,
+        nomeEmpreendimento,
         setMensagem
     }) => {
 
-        const [exibirModalImobiliaria, setExibirModalImobiliaria] = useState(false)
-        // const [exibirBotoesImobiliaria, setExibirBotoesImobiliaria] = useState(false)
+        const [exibirModalEmpreendimento, setExibirModalEmpreendimento] = useState(false)
+        // const [exibirBotoesEmpreendimento, setExibirBotoesEmpreendimento] = useState(false)
 
         const [classe, setClasse] = useState('gr')
 
@@ -22,21 +22,21 @@ const PropostaImobiliaria =
             <>
                 <Form.Group
                     as={Row}
-                    // onMouseOver={() => setExibirBotoesImobiliaria(true)}
-                    // onMouseLeave={() => setExibirBotoesImobiliaria(false)}
+                    // onMouseOver={() => setExibirBotoesEmpreendimento(true)}
+                    // onMouseLeave={() => setExibirBotoesEmpreendimento(false)}
                     className="gr"
                 >
-                    <Form.Label column sm={2} className="lab">Imobiliária : </Form.Label>
+                    <Form.Label column sm={2} className="lab">Empreendimento : </Form.Label>
                     <Col sm={5}>
                         <Form.Control
                             type="text"
-                            placeholder="Clique para selecionar uma Imobiliária"
-                            name="id_Imobiliaria"
+                            placeholder="Clique para selecionar um Empreendimento."
+                            name="id_Empreendimento"
                             className="cont"
-                            value={nomeImobiliaria}
-                            readonly
-                            onClick={() => setExibirModalImobiliaria(!exibirModalImobiliaria)}
+                            value={nomeEmpreendimento}
                             autocomplete="off"
+                            onClick={() => setExibirModalEmpreendimento(!exibirModalEmpreendimento)}
+                            readonly
                         />
                         <Form.Control.Feedback type="invalid">
                             Selecione a Imobiliária válida.
@@ -44,29 +44,29 @@ const PropostaImobiliaria =
                     </Col>
                     <div className="d-flex" >
                         {
-                            nomeImobiliaria
+                            nomeEmpreendimento
                                 ? <div className="d-flex">
                                     {/* <BotaoLinha
                                         disabled={false}
                                         classe="bot btn-primary"
                                         icone={faFolderOpen}
-                                        onClick={() => setExibirModalImobiliaria(!exibirModalImobiliaria)}
-                                        dica = 'Selecionar uma Imobiliária'
+                                        onClick={() => setExibirModalEmpreendimento(!exibirModalEmpreendimento)}
+                                        dica = 'Selecionar um Empreendimento'
                                     />
                                     <BotaoLinha
                                         disabled={false}
                                         classe="bot btn-success"
                                         icone={faPlus}
-                                        onClick={() => setIdImobiliaria(null)}
-                                        dica = 'Cadastrar uma Imobiliária'
+                                        onClick={() => setIdEmpreendimento(null)}
+                                        dica = 'Cadastrar um Empreendimento'
                                     /> */}
                                     
                                     <BotaoLinha
                                         disabled={false}
                                         classe="bot btn-light"
                                         icone={faMinus}
-                                        onClick={() => setIdImobiliaria(null)}
-                                        dica = 'Limpar campo Imobiliária'
+                                        onClick={() => setIdEmpreendimento(null)}
+                                        dica = 'Limpar campo Empreendimento'
                                         posicao = 'right'
                                     />
 
@@ -78,15 +78,15 @@ const PropostaImobiliaria =
                     </div>
                 </Form.Group>
                 {
-                    <MostrarImobiliarias
-                        titulo='Imobiliárias'
-                        setIdImobiliaria={setIdImobiliaria}
-                        setNomeImobiliaria={setNomeImobiliaria}
-                        setExibirModalImobiliaria={setExibirModalImobiliaria}
-                        exibirModalImobiliaria={exibirModalImobiliaria} />
+                    <MostrarEmpreendimentos
+                        titulo='Empreendimentos'
+                        setIdEmpreendimento={setIdEmpreendimento}
+                        setNomeEmpreendimento={setNomeEmpreendimento}
+                        setExibirModalEmpreendimento={setExibirModalEmpreendimento}
+                        exibirModalEmpreendimento={exibirModalEmpreendimento} />
                 }
             </>
         );
     }
 
-export default PropostaImobiliaria;
+export default PropostaEmpreendimento;

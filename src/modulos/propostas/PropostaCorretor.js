@@ -13,24 +13,26 @@ const PropostaCorretor =
     }) => {
 
     const [exibirModalCorretor, setExibirModalCorretor] = useState(false)
-    const [exibirBotoesCorretor, setExibirBotoesCorretor] = useState(false)
+    // const [exibirBotoesCorretor, setExibirBotoesCorretor] = useState(false)
 
     return (
         <>
         <Form.Group
             as={Row}
-            onMouseOver={() => setExibirBotoesCorretor(true)}
-            onMouseLeave={() => setExibirBotoesCorretor(false)}
+            // onMouseOver={() => setExibirBotoesCorretor(true)}
+            // onMouseLeave={() => setExibirBotoesCorretor(false)}
             className="gr"
         >
             <Form.Label column sm={2} className="lab">Corretor : </Form.Label>
-            <Col sm={4}>
+            <Col sm={5}>
                 <Form.Control
                     type="text"
-                    placeholder="Selecione um Corretor no botão ao lado."
+                    placeholder="Clique para selecionar um Corretor."
                     name="id_Corretor"
                     className="cont"
                     value={nomeCorretor}
+                    autocomplete="off"
+                    onClick={() => setExibirModalCorretor(!exibirModalCorretor)}
                     readonly
                 />
                 <Form.Control.Feedback type="invalid">
@@ -39,25 +41,29 @@ const PropostaCorretor =
             </Col>
             <div className="d-flex" >
                 {
-                    exibirBotoesCorretor
+                    nomeCorretor
                         ? <div className="d-flex">
-                                <BotaoLinha
+                                {/* <BotaoLinha
                                     disabled={false}
                                     classe="bot btn-primary"
                                     icone={faFolderOpen}
                                     onClick={() => setExibirModalCorretor(!exibirModalCorretor)}
+                                    dica = 'Selecionar um Corretor'
                                 />
                                 <BotaoLinha
                                     disabled={false}
                                     classe="bot btn-success"
                                     icone={faPlus}
                                     onClick={() => setIdCorretor(null)}
-                                />
+                                    dica = 'Cadastrar um Corretor'
+                                /> */}
                                 <BotaoLinha
                                     disabled={false}
                                     classe="bot btn-light"
                                     icone={faMinus}
                                     onClick={() => setIdCorretor(null)}
+                                    dica = 'Limpar campo Corretor'
+                                    posicao = 'right'
                                 />
                             </div>
                         : null
@@ -65,14 +71,12 @@ const PropostaCorretor =
             </div>
         </Form.Group>
         {
-            exibirModalCorretor
-                ? <MostrarCorretores 
+            <MostrarCorretores 
                 titulo='Corretores'
                 setIdCorretor={setIdCorretor}
                 setNomeCorretor={setNomeCorretor}
                 setExibirModalCorretor={setExibirModalCorretor}
                 exibirModalCorretor={exibirModalCorretor} />
-                : null
         }
         </>
     );

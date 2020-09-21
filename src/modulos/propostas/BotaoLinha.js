@@ -1,13 +1,32 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
+import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const BotaoLinha = ({disabled, classe, onClick, icone}) => {
+const BotaoLinha = ({ disabled, classe, onClick, icone, dica, posicao }) => {
 
-    return (
-        <Button disabled={disabled} className={classe} onClick={onClick}><FontAwesomeIcon icon={icone} /></Button>
-      );
+  const msg = dica ? dica.split('    ') : ['']
+  const pos = posicao === 'right' ? 'right' : 'left'
+
+  return (
+    <>
+      {msg.map((placement) => (
+        <OverlayTrigger
+          key={placement}
+          placement={pos}
+          overlay={
+            <Tooltip id={`tooltip-${placement}`}>
+              {placement}.
+            </Tooltip>
+          }
+        >
+          <Button disabled={disabled} className={classe} onClick={onClick}><FontAwesomeIcon icon={icone} /></Button>
+        </OverlayTrigger>
+      ))}
+
+    </>
+
+  )
 }
- 
+
 export default BotaoLinha;
 

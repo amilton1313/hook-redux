@@ -13,7 +13,7 @@ const PropostaProponente =
     }) => {
 
     const [exibirModalProponente, setExibirModalProponente] = useState(false)
-    const [exibirBotoesProponente, setExibirBotoesProponente] = useState(false)
+    // const [exibirBotoesProponente, setExibirBotoesProponente] = useState(false)
 
     const [classe, setClasse] = useState('gr')
 
@@ -21,18 +21,20 @@ const PropostaProponente =
         <>
         <Form.Group
             as={Row}
-            onMouseOver={() => setExibirBotoesProponente(true)}
-            onMouseLeave={() => setExibirBotoesProponente(false)}
+            // onMouseOver={() => setExibirBotoesProponente(true)}
+            // onMouseLeave={() => setExibirBotoesProponente(false)}
             className="gr"
         >
             <Form.Label column sm={2} className="lab">Proponente : </Form.Label>
-            <Col sm={4}>
+            <Col sm={5}>
                 <Form.Control
                     type="text"
-                    placeholder="Selecione uma Imobiliária no botão ao lado."
+                    placeholder="Clique para selecionar um Proponente."
                     name="id_Proponente"
                     className="cont"
                     value={nomeProponente}
+                    autocomplete="off"
+                    onClick={() => setExibirModalProponente(!exibirModalProponente)}
                     readonly
                 />
                 <Form.Control.Feedback type="invalid">
@@ -41,25 +43,29 @@ const PropostaProponente =
             </Col>
             <div className="d-flex" >
                 {
-                    exibirBotoesProponente
+                    nomeProponente
                         ? <div className="d-flex">
-                                <BotaoLinha
+                                {/* <BotaoLinha
                                     disabled={false}
                                     classe="bot btn-primary"
                                     icone={faFolderOpen}
                                     onClick={() => setExibirModalProponente(!exibirModalProponente)}
+                                    dica = 'Selecionar um Proponente'
                                 />
                                 <BotaoLinha
                                     disabled={false}
                                     classe="bot btn-success"
                                     icone={faPlus}
                                     onClick={() => setIdProponente(null)}
-                                />
+                                    dica = 'Cadastrar um Proponente'
+                                /> */}
                                 <BotaoLinha
                                     disabled={false}
                                     classe="bot btn-light"
                                     icone={faMinus}
                                     onClick={() => setIdProponente(null)}
+                                    dica = 'Limpar campo Proponente'
+                                    posicao = 'right'
                                 />
                             </div>
                         : null

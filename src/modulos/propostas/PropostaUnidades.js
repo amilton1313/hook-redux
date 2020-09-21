@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Row, Col, Button, Jumbotron, Table } from 'react-bootstrap'
-import ReactList from 'react-list'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faPlus, faFolderOpen, faAngleDoubleLeft, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 
+import PropostaEmpreendimento from './PropostaEmpreendimento'
+import tabelasVendas from './lista-de-tabelas-vendas'
 import './propo.css'
 
 const PropostaUnidades = () => {
+
+    const [idEmpreendimento, setIdEmpreendimento] = useState(null)
+    const [nomeEmpreendimento, setNomeEmpreendimento] = useState('')
+    const [exibirModalEmpreendimento, setExibirModalEmpreendimento] = useState(false)
+    const [exibirBotoesEmpreendimento, setExibirBotoesEmpreendimento] = useState(false)
 
     const unidades = [
         { id_unidade: 34, blocox: 'Aurora', numero: '404', garagensx: '25 e 36', depositosx: '65 e 21' },
         { id_unidade: 35, blocox: 'Aurora', numero: '502', garagensx: '25 e 40', depositosx: '70 e 75' },
     ]
+
+    useEffect(() => {
+        if (!idEmpreendimento) { setNomeEmpreendimento('') }
+
+    }, [idEmpreendimento])
 
     return (
         <>
@@ -21,26 +32,28 @@ const PropostaUnidades = () => {
             >
                 <Form noValidate style={{ margin: '10px' }}>
 
+                {/* Empreedimento */}
+                    <PropostaEmpreendimento
+                        setIdEmpreendimento={setIdEmpreendimento}
+                        setNomeEmpreendimento={setNomeEmpreendimento}
+                        nomeEmpreendimento={nomeEmpreendimento}
+                    />
 
-                    {/* Empreendimento */}
-                    <Form.Group
-                        as={Row}
-                        className="gr"
-                    >
-                        <Form.Label column sm={2} className="lab">Empreendimento : </Form.Label>
-                        <Col sm={4}>
-                            <Form.Control
-                                type="text"
-                                placeholder="Selecione um Empreendimento no botão ao lado."
-                                name="id_empreendimento"
-                                className="cont"
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                Digite o seu nome completo (mínimo 5 caracteres).
-                            </Form.Control.Feedback>
-                        </Col>
+                {/* Tabela de Vendas */}
+                <Form.Group 
+                    as={Row}
+                    className="gr"
+                >
+                    <Form.Label column sm={2} className="lab">Tabela de Vendas : </Form.Label>
+                    <Col sm={5}>
+                    <Form.Control as="select" name="id_tabela" className="cont">
+                        {
+                            tabelasVendas.map(tab => <option value={tab.id_tabela_vendas}>{tab.descricao}</option>)
+                        }
+                    </Form.Control>
+                    </Col>
 
-                    </Form.Group>
+                </Form.Group>
 
                 </Form>
 

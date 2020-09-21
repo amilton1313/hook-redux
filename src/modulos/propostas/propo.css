@@ -84,7 +84,7 @@
 
 .mostrar-list {
     overflow: auto;
-    max-height: 600px;
+    max-height: 500px;
     background-color: white;
 }
 

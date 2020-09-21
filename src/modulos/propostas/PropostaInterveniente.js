@@ -13,7 +13,7 @@ const PropostaInterveniente =
     }) => {
 
     const [exibirModalInterveniente, setExibirModalInterveniente] = useState(false)
-    const [exibirBotoesInterveniente, setExibirBotoesInterveniente] = useState(false)
+    // const [exibirBotoesInterveniente, setExibirBotoesInterveniente] = useState(false)
 
     const [classe, setClasse] = useState('gr')
 
@@ -21,18 +21,20 @@ const PropostaInterveniente =
         <>
         <Form.Group
             as={Row}
-            onMouseOver={() => setExibirBotoesInterveniente(true)}
-            onMouseLeave={() => setExibirBotoesInterveniente(false)}
+            // onMouseOver={() => setExibirBotoesInterveniente(true)}
+            // onMouseLeave={() => setExibirBotoesInterveniente(false)}
             className="gr"
         >
             <Form.Label column sm={2} className="lab">Interveniente : </Form.Label>
-            <Col sm={4}>
+            <Col sm={5}>
                 <Form.Control
                     type="text"
-                    placeholder="Selecione uma Imobiliária no botão ao lado."
+                    placeholder="Clique para selecionar um Interveniente."
                     name="id_Interveniente"
                     className="cont"
                     value={nomeInterveniente}
+                    autocomplete="off"
+                    onClick={() => setExibirModalInterveniente(!exibirModalInterveniente)}
                     readonly
                 />
                 <Form.Control.Feedback type="invalid">
@@ -41,25 +43,29 @@ const PropostaInterveniente =
             </Col>
             <div className="d-flex" >
                 {
-                    exibirBotoesInterveniente
+                    nomeInterveniente
                         ? <div className="d-flex">
-                                <BotaoLinha
+                                {/* <BotaoLinha
                                     disabled={false}
                                     classe="bot btn-primary"
                                     icone={faFolderOpen}
                                     onClick={() => setExibirModalInterveniente(!exibirModalInterveniente)}
+                                    dica = 'Selecionar um Interveniente'
                                 />
                                 <BotaoLinha
                                     disabled={false}
                                     classe="bot btn-success"
                                     icone={faPlus}
                                     onClick={() => setIdInterveniente(null)}
-                                />
+                                    dica = 'Cadastrar um Interveniente'
+                                /> */}
                                 <BotaoLinha
                                     disabled={false}
                                     classe="bot btn-light"
                                     icone={faMinus}
                                     onClick={() => setIdInterveniente(null)}
+                                    dica = 'Limpar campo Interveniente'
+                                    posicao = 'right'
                                 />
                             </div>
                         : null
