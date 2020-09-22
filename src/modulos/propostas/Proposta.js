@@ -15,7 +15,7 @@ const Proposta = () => {
             <div>
                 <Tab.Container id="left-tabs-example" defaultActiveKey="dados">
                     <Row>
-                        <Col sm={3}>
+                        <Col sm={2}>
                             <Nav variant="pills" className="flex-column">
                                 <Nav.Item>
                                     <Nav.Link eventKey="dados">Dados</Nav.Link>
