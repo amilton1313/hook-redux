@@ -19,6 +19,8 @@ import Proposta from '../modulos/propostas/Proposta'
 
 import Sidebar from '../modulos/sidebar/Sidebar'
 
+import UsarContext from '../modulos/usarContext/UsarContext'
+
 function Rotas() {
 
     const entrada = {
@@ -55,6 +57,10 @@ function Rotas() {
       '/sidebar': () => <Sidebar />
     }
 
+    const usarContext = {
+      '/usarContext': () => <UsarContext />
+    }
+
     const rotas = {
       ...entrada,
       ...calculadora,
@@ -63,7 +69,8 @@ function Rotas() {
       ...dashboard,
       ...ecomerce,
       ...propostas,
-      ...sidebar
+      ...sidebar,
+      ...usarContext
     }
   
   

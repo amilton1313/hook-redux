@@ -18,6 +18,8 @@ const Entrada = () => {
             <A href="/proposta" className="btn btn-primary">Proposta</A>
             &nbsp;
             <A href="/sidebar" className="btn btn-primary">Sidebar</A>
+            &nbsp;
+            <A href="/usarContext" className="btn btn-primary">usarContext</A>
         </div>
      )
 }
